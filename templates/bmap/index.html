@@ -1,0 +1,99 @@
+{% load static %}
+
+<html>
+	<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4334f156b0a4863ce412e95818759bea"></script>-->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4334f156b0a4863ce412e95818759bea&libraries=services"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<!--<link rel="stylesheet" href="{% static '/bmap/css/index.css' %}">-->
+	<link rel="stylesheet" href="{% static '/bmap/css/index2.css' %}">
+	</head>
+	<body>
+	
+		<div id="info">
+			<form id="sendloc" method="post">
+				{% csrf_token %}
+				<input type="hidden" id="user_jibun" name="user_jibun" />    
+            </form>
+            <div id="searchbox">
+	            <form id="sendsearch" method="post">
+	            	{% csrf_token %}
+		            <input id="search-box-input" type="text" placeholder="주소를 입력하세요" name="search-box-input">
+		            <input  type="IMAGE" src="{% static '/bmap/img/search.png' %}" id="submit-img" name="submit" value="submit" onClick="searchInputAddr(); return false;">
+	            </form>
+            </div>
+            
+			<div id="address-info" class="panel">
+				
+				<div id="addr-result">
+					원하는 지역을 선택하세요
+				</div>
+				<div id="rank-box">A</div>
+			</div>
+			
+			
+			<div id="develop-info" class="panel">
+				<div class="sub-title">주소 정보</div>
+				<div id="develop-result"></div>
+				
+			</div>
+
+			<div id="develop-display-box" class="panel">
+				<div class="sub-title">개발가능성</div>
+				<div id="develop-display">
+					<div id="display-box-container">
+						<div class="develop-display-text">현재 연면적</div>
+						<div id="temp" class="totArea-display-box"></div>
+						<div class="develop-display-text">최대 연면적</div>
+						<div id="allow" class="totArea-display-box"></div>
+					</div>
+					<div id="diff">
+						<div id="diff-display"></div>
+					</div>
+					
+				</div>
+			</div>
+
+			<div id="building-info" class="panel">
+				<div class="sub-title">
+				<button onclick="show_building_info()" id="detail-info-button">건축물 정보 자세히 보기</button>
+				</div>
+				<div id="building-info-content" style="display: none;"></div>
+				
+			</div>
+			
+
+			<br/>
+				
+		</div>
+
+
+		<div id="map"></div>		
+
+		<div id="detail-info-table" style="display: none;">
+			<div class="detail-panel">
+				<div class="detail-title">토지 정보</div>
+				<div id="detail-area-info"></div>
+			</div>
+			<div class="detail-panel">
+				<div class="detail-title">건물 정보</div>
+				<div id="detail-building-info"></div>
+			</div>
+			<div class="detail-panel">
+				<div class="detail-title">가격 정보</div>
+				<div id="detail-price-info"></div>
+			</div>
+			<input type="button" id="exit-button" onclick="hide_detail();" value="X">
+		</div>
+
+		<button type="button" id="product-button" onclick="location.href='prod'">매물보기</button>
+		<!--<script type="text/javascript" src="{% static '/bmap/js/index.js' %}"></script>-->
+		<script type="text/javascript" src="{% static '/bmap/js/index2.js' %}"></script>
+
+
+
+		
+	</body>
+</html>

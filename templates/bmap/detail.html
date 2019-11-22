@@ -1,0 +1,97 @@
+{% load static %}
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<link rel="stylesheet" href="{% static '/bmap/css/detail.css' %}">
+		<script type="text/javascript" src="{% static '/bmap/js/detail.js' %}"></script>
+	</head>
+	<body>
+		<div id="table">
+			<input type="button" id="exit-button" onclick="history.back(-1);" value="X">
+			<div class="frame">
+				
+				<div id="slider">
+
+					<ul id="slides">
+						{% static "/bmap/img/" as baseUrl %}
+						<li>
+							<img src="{{baseUrl}}{{id}}/1.jpg">
+						</li>
+						<li>
+							<img src="{{baseUrl}}{{id}}/2.jpg">
+						</li>
+						<li>
+							<img src="{{baseUrl}}{{id}}/3.jpg">
+						</li>
+						<li>
+							<img src="{{baseUrl}}{{id}}/4.jpg">
+						</li>
+						<li>
+							<img src="{{baseUrl}}{{id}}/5.jpg">
+						</li>
+					</ul>
+
+		          <div class="btns" id="next"><i class="fa fa-arrow-right"></i></div>
+		          <div class="btns" id="previous"><i class="fa fa-arrow-left"></i></div>
+		          <div id="counter"></div>
+		          
+		          <div id="pagination-wrap">
+		          <ul>
+		          </ul>
+		          </div>						
+
+				</div>
+			</div>
+
+			<div class="frame">
+				
+				<div class="frame-title">
+				매물 정보
+				</div>
+				<div id="info-table">
+					<div class="info-category">매물번호</div>
+					<div class="info-value">{{id}}</div>
+					<div class="info-category">분류</div>
+					<div class="info-value">{{build_type}}</div>
+					<div class="info-category">난방종류</div>
+					<div class="info-value">{{nanbang}}</div>
+					<div class="info-category">엘리베이터</div>
+					<div class="info-value">{{elevator}} 대</div>
+					<div class="info-category">월세/보증금</div>
+					<div class="info-value">{{rent}}만원/{{deposit}}만원</div>
+					<div class="info-category">권리금</div>
+					<div class="info-value">{{premium}}만원</div>
+					<div class="info-category">주차</div>
+					<div class="info-value">{{parking}} 대</div>
+					<div class="info-category">관리비</div>
+					<div class="info-value">{{maintenance}}만원</div>
+					<div class="info-category">화장실</div>
+					<div class="info-value">{{toilet_place}}/{{toilet_sex}}</div>
+					<div class="info-category">해당층/건물층</div>
+					<div class="info-value">{{floor}}</div>
+					<div class="info-category">계약면적/전용면적</div>
+					<div class="info-value">{{area_g}}평/{{area_j}}평</div>
+					<div class="info-category">입주가능일</div>
+					<div class="info-value">{{move_day}}</div>
+					<div class="info-category">추천업종</div>
+					<div class="info-value">{{business}}</div>
+					<div class="info-category">준공년도</div>
+					<div class="info-value">{{completion}}</div>
+				</div>
+			</div>
+			<div class="frame">
+				<div class="frame-title">
+				매물 상세 설명
+				</div>
+				<div id="commnet-content">
+				{{comment}}
+				</div>
+			</div>
+		
+		</div>
+		
+
+	</body>
+</html>

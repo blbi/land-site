@@ -1,0 +1,111 @@
+{% load static %}
+
+<html>
+	<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4334f156b0a4863ce412e95818759bea"></script>-->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4334f156b0a4863ce412e95818759bea&libraries=services"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+	<link rel="stylesheet" href="{% static '/bmap/css/prod.css' %}">
+	</head>
+	<body>
+		<script type="text/javascript" >
+			var prod_list = new Array();
+			var imageSrc = "{% static '/bmap/img/marker2.png' %}"
+			function showareavalue(val){
+				document.getElementById('area-value').innerHTML = val;
+			}
+
+			//var rangeSlider = function(){
+			function rangeSlider(){
+				var range = $('area');
+				range.on('input',function(){
+					showareavalue(this.value);
+				});
+			};
+
+			rangeSlider();
+		</script>
+		<div id="product-list">
+
+			<form id="sendsearch" method="post">
+			<div id="searchbox">
+	            
+	            	{% csrf_token %}
+		            <input id="search-box-input" type="text" placeholder="주소를 입력하세요" name="search-box-input">
+		            <input  type="IMAGE" src="{% static '/bmap/img/search.png' %}" id="submit-img" name="submit" value="submit" onClick="searchInputAddr(); return false;">
+	            
+            </div>
+			<div id="detail-search">
+
+				<div id="type-container">
+            	<div class="detail-element-type">업종</div>
+            	<div id="type-block">
+            	<select class="detail-search-value" name="store-type" id="store-type">
+            		<option value="default" selected>업종 선택 </option>
+            		<option value="신규입점"> 신규입점 </option>
+					<option value="패스트푸드"> 패스트푸드 </option>
+					<option value="음식배달서비스"> 음식배달서비스 </option>
+					<option value="치킨"> 치킨 </option>
+					<option value="한식"> 한식 </option>
+					<option value="네일아트"> 네일아트 </option>
+					<option value="퓨전요리"> 퓨전요리 </option>
+					<option value="한식"> 한식 </option>
+					<option value="의복의류"> 의복의류 </option>
+            	</select>
+            	</div>
+            	</div>
+
+            	<div id="area-container">
+            	<div class="detail-element-area">평형</div>
+            	<div id="area-block">
+            	<input type="range" class="detail-search-value" id="area" name="area" min="0" max="200" step="5" value="0">
+            	</div>
+            	<div id="area-value"></div>
+            	</div>
+            </div>
+
+            </form>
+            
+            <div id="toggle_button" onclick="toggle_detail();">=</div>
+			<div id="product-title">
+				매물
+			</div>
+			{% for product in prod_list %}
+
+			<script type="text/javascript" >
+				prod_list.push('{{product.address}}');
+			</script>
+			<div class="product-panel" id="{{product.address}}"onmouseover="show_loc('{{product.address}}')" onmouseout="revert_marker('{{product.address}}')" onclick="location.href = '{% url 'detail' product.id %}'">
+				<p>{{product.address}}</p>
+				<p style="font-size: 1.5em">{{product.rent}} / {{product.deposit}}</p>
+				<p>{{product.area_g}}평 / {{product.area_j}}평</p>	
+				<div id='rank'>검색빈도 : 
+				{% if product.rank < 5 %}
+				E
+				{% elif product.rank < 10 %}
+				D
+				{% elif product.rank < 15 %}
+				C
+				{% elif product.rank < 20 %}
+				B
+				{% else %}
+				A
+				{% endif %}
+				</div>
+			</div>
+			{% empty %}
+				<div id="no-search-result">검색 결과가 없습니다.</div>
+			{% endfor %}
+				
+		</div>
+
+
+		<div id="map"></div>
+		<button type="button" id="map-button" onclick="location.href='/bmap/'">지적편집도보기</button>
+		<script type="text/javascript" src="{% static '/bmap/js/prod2.js' %}"></script>
+		
+	</body>
+</html>

@@ -1,0 +1,195 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+* {
+	margin: 0;
+	padding: 0;
+}
+html, body{
+	width: 100%;
+	height: 100%;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+#product-list{
+	left: 0;
+	top: 0;
+	width: 23%;
+	height: 100%;
+	float: left;
+	background-color: #595959;
+	
+	overflow:scroll;
+}
+#searchbox{
+	width: 95%;
+	height: 3em;	
+	margin: auto;
+	margin-bottom: 0;
+	background-color: white;
+	border: 10px solid #003300;
+	border-style: solid;
+}
+
+#search-box-input{
+	position: relative;
+	float: left;
+	width: 85%;
+	height: 98%;
+	margin: 0 1% 0 0.5%;
+	padding-left: 3%;
+	border: none;
+}
+
+#submit-img{
+	position: relative;
+	float: left;
+	width: 9%;
+	height: width;
+	margin-top: 0.5em;
+	margin-left: 0.5em;
+}
+#toggle_button{
+	width: 100%;
+	height: 1.4em;
+	background-color: #003300;
+	text-align: center;
+	padding-top: 0;
+	margin-top: 0;
+	color: white;
+}
+#detail-search{
+	width: 100%;
+	height: 6em;
+	background-color: #003300;
+	/*display: none;*/
+}
+/*
+.detail-element{
+	position: relative;
+	width: 20%;
+	height: 2em;
+	color: white;
+	font-size: 1.2em;
+	margin-bottom: 2em;
+	padding-left: 1em;
+	border-style: solid;
+	margin-right: 0;
+}
+*/
+
+
+#type-container{
+	position: relative;
+	margin: 0;
+	width: 99.5%;
+	height: 3em;
+
+}
+
+#area-container{
+	position: relative;
+	margin: 0;
+	width: 99.5%;
+	height: 3em;
+}
+
+
+.detail-element-type{
+	position: relative;
+	float: left;
+	top: 10px;
+	left: 15px;
+	color: white;
+	font-size: 1.3em;
+}
+
+.detail-element-area{
+	position: relative;
+	float: left;
+	top: 10px;
+	left: 15px;
+	color: white;
+	font-size: 1.3em;
+}
+#type-block{
+	position: relative;
+	top: 13px;
+	left: 50px;
+	width: 50%;
+	height: 2.5em;
+}
+#area{
+	position: relative;
+	top: 13px;
+	left: 50px;
+	width: 60%;
+	padding: 0;
+}
+#area-value{
+	position: relative;
+	top: 2px;
+	left: 85%;
+	color: white; 
+	width: 10%;
+}
+
+
+#product-title{
+	background-color: white;
+	text-align: center;
+	width: 99.5%;
+	height: 3em;
+	line-height: 3em;
+	margin-top: 0;
+	border-bottom-color : #006600;
+	border-bottom: 3px solid #006600;
+}
+
+.product-panel{
+	width: 96%;
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+	padding-left: 1em;
+	line-height: 1.8em;
+	background-color: #e6e6e6;
+	box-shadow: 2px 4px 10px #1a1a1a;
+	color: black;
+	
+	margin-bottom: 0.5em;
+
+}
+.product-panel p{
+	font-size: 0.9em;
+}
+#rank{
+	color: grey;
+	font-weight: bold;
+	font-size: 1.0em;
+}
+#no-search-result{
+	color: white;
+	margin-top: 2em;
+	margin-left: 27%;
+	font-size: 1.3em;
+}
+#map-button{
+	position: fixed;
+	left: 92%;
+	top: 10%;
+	width: 8%;
+	height: 7%;
+	z-index: 1;
+	color: white;
+	font-size: 1em;
+	padding: 0 0em 0em 0em;
+	background-color: #006600;
+	border: none;
+	box-shadow: 2px 4px 10px #1a1a1a;
+	-webkit-transform: translateZ(1)
+}
+#map{
+	width: 77%;
+	height: 100%;
+}
+
+

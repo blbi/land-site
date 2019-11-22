@@ -1,0 +1,18 @@
+{% load static %}
+
+<html>
+	<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4334f156b0a4863ce412e95818759bea"></script>-->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4334f156b0a4863ce412e95818759bea&libraries=services"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" src="{% static '/bmap/js/ajax-cross-origin/js/jquery.ajax-cross-origin.min.js' %}"></script>
+	
+	<link rel="stylesheet" href="{% static '/bmap/css/index.css' %}">
+	</head>
+	<body>
+	{{ location }}
+
+	</body>
+</html>
